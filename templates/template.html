@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Github Navigator</title>
+    </head>
+    <body>
+        <h1>Latest repositories for: {{ search_term }}</h1>
+        {% for repo in repositories %}
+            <h2> {{ repo.name }},
+              {{ repo.created_at }} ,
+                <a href="{{ repo.owner_url }}">
+                    <img src="{{ repo.owner_avatar_url }}" alt="avatar" height="30" width="30"/>
+                    {{ repo.owner_login }}
+                </a>
+            </h2>
+
+            
+            <h4> 
+                Latest commit: {{ repo.latest_commit.message }} <br/>
+                hash: {{ repo.latest_commit.hash }}<br/>
+                Author: {{ repo.latest_commit.author }} <br/> 
+            </h4> 
+            <hr/>
+        {% endfor %}
+    </body>
+</html>
